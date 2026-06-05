@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -18,32 +19,42 @@ public class Home_Fragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState
+    ) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         calendarView = view.findViewById(R.id.calendarView);
         btnUpdateBaby = view.findViewById(R.id.btnUpdateBaby);
 
-        // ניווט לפי תאריך (קיים)
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+            public void onSelectedDayChange(
+                    @NonNull CalendarView view,
+                    int year,
+                    int month,
+                    int dayOfMonth
+            ) {
                 String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
-                navigateToPumpDetails(view, selectedDate);
+                navigateToDailySummary(view, selectedDate);
             }
         });
 
-        // ניווט לעדכון פרופיל התינוק (חדש)
         btnUpdateBaby.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.action_home_Fragment_to_babyProfileFragment);
+            Navigation.findNavController(v)
+                    .navigate(R.id.action_home_Fragment_to_babyProfileFragment);
         });
 
         return view;
     }
 
-    private void navigateToPumpDetails(View view, String date) {
+    private void navigateToDailySummary(View view, String date) {
         Bundle bundle = new Bundle();
         bundle.putString("selected_date", date);
-        Navigation.findNavController(view).navigate(R.id.action_home_Fragment_to_pumpDetailsFragment, bundle);
+
+        Navigation.findNavController(view)
+                .navigate(R.id.action_home_Fragment_to_dailySummaryFragment, bundle);
     }
 }
