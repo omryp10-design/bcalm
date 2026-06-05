@@ -18,6 +18,65 @@
         android:layout_marginBottom="20dp" />
 
     <TextView
+        android:id="@+id/tvTotalFeedings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Feedings: 0"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvTotalMilk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Milk: 0 ml"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvAverageFeeding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Average Feeding: 0 ml"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Baby Intake Comparison"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvBabyAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Baby Age: --"
+        android:textSize="16sp"
+        android:layout_marginBottom="6dp" />
+
+    <TextView
+        android:id="@+id/tvExpectedDailyIntake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Expected Daily Intake: --"
+        android:textSize="16sp"
+        android:layout_marginBottom="6dp" />
+
+    <TextView
+        android:id="@+id/tvIntakeComparison"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comparison: --"
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Feeding History"

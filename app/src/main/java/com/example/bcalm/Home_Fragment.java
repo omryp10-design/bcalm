@@ -37,7 +37,7 @@ public class Home_Fragment extends Fragment {
                     int month,
                     int dayOfMonth
             ) {
-                String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
+                String selectedDate = formatDateKey(year, month, dayOfMonth);
                 navigateToDailySummary(view, selectedDate);
             }
         });
@@ -48,6 +48,17 @@ public class Home_Fragment extends Fragment {
         });
 
         return view;
+    }
+
+    private String formatDateKey(int year, int month, int dayOfMonth) {
+        int realMonth = month + 1;
+
+        return String.format(
+                "%04d-%02d-%02d",
+                year,
+                realMonth,
+                dayOfMonth
+        );
     }
 
     private void navigateToDailySummary(View view, String date) {
