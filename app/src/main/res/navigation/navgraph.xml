@@ -14,10 +14,18 @@
         <action
             android:id="@+id/action_home_Fragment_to_dailySummaryFragment"
             app:destination="@id/dailySummaryFragment" />
-
         <action
             android:id="@+id/action_home_Fragment_to_babyProfileFragment"
             app:destination="@id/babyProfileFragment" />
+        <action
+            android:id="@+id/action_home_Fragment_to_weeklyTrendsFragment"
+            app:destination="@id/weeklyTrendsFragment" />
+        <action
+            android:id="@+id/action_home_Fragment_to_weightTrackingFragment"
+            app:destination="@id/weightTrackingFragment" />
+        <action
+            android:id="@+id/action_home_Fragment_to_babiesFragment"
+            app:destination="@id/babiesFragment" />
     </fragment>
 
     <fragment
@@ -51,7 +59,6 @@
         <action
             android:id="@+id/action_login_Fragment_to_register_Fragment"
             app:destination="@id/register_Fragment" />
-
         <action
             android:id="@+id/action_login_Fragment_to_home_Fragment"
             app:destination="@id/home_Fragment" />
@@ -68,5 +75,28 @@
         android:name="com.example.bcalm.BabyProfileFragment"
         android:label="Baby Profile"
         tools:layout="@layout/fragment_baby_profile" />
+
+    <fragment
+        android:id="@+id/weeklyTrendsFragment"
+        android:name="com.example.bcalm.WeeklyTrendsFragment"
+        android:label="Weekly Trends"
+        tools:layout="@layout/fragment_weekly_trends" />
+
+    <fragment
+        android:id="@+id/weightTrackingFragment"
+        android:name="com.example.bcalm.WeightTrackingFragment"
+        android:label="Growth"
+        tools:layout="@layout/fragment_weight_tracking" />
+
+    <fragment
+        android:id="@+id/babiesFragment"
+        android:name="com.example.bcalm.BabiesFragment"
+        android:label="My Babies"
+        tools:layout="@layout/fragment_babies">
+
+        <action
+            android:id="@+id/action_babiesFragment_to_babyProfileFragment"
+            app:destination="@id/babyProfileFragment" />
+    </fragment>
 
 </navigation>

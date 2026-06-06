@@ -2,4 +2,27 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Primary: soft sky blue -->
+    <color name="primary_blue">#5DA9DC</color>
+    <color name="primary_blue_dark">#3E8AC0</color>
+    <color name="primary_blue_light">#BFE0F2</color>
+
+    <!-- Accent: soft pink -->
+    <color name="accent_pink">#EE8FB4</color>
+    <color name="accent_pink_dark">#E1709F</color>
+    <color name="accent_pink_light">#F9D6E4</color>
+
+    <!-- Background gradient -->
+    <color name="bg_gradient_top">#E8F3FB</color>
+    <color name="bg_gradient_bottom">#FBEAF1</color>
+
+    <!-- Surfaces & text -->
+    <color name="surface">#FFFFFF</color>
+    <color name="text_primary">#3A4A5A</color>
+    <color name="text_secondary">#5C6B7A</color>
+    <color name="text_hint">#AEB8C2</color>
+    <color name="divider">#ECEFF3</color>
+
+    <color name="danger">#E57373</color>
 </resources>

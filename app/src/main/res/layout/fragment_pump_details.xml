@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="#FFFFFF">
+    android:background="@drawable/bg_gradient"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,72 +15,90 @@
             android:id="@+id/dateTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="18dp"
             android:gravity="center"
-            android:layout_marginBottom="20dp"
-            android:text="Data for: --/--/----" />
+            android:text="Data for: --/--/----"
+            android:textColor="@color/text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="14dp"
+            android:orientation="horizontal">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnToggle"
+                style="@style/Widget.Bcalm.Button.Primary"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:text="▶ START"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="#2196F3"
-                android:textColor="#FFFFFF" />
+                android:text="▶ START" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnReset"
+                style="@style/Widget.Bcalm.Button.Outlined"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:layout_weight="1"
-                android:text="↺ RESET"
-                android:backgroundTint="#9E9E9E"
-                android:textColor="#FFFFFF" />
+                android:text="↺ RESET" />
         </LinearLayout>
 
-        <TextView
+        <ProgressBar
+            android:id="@+id/progressBarSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="נפח מצטבר (mL)"
-            android:textSize="14sp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone" />
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/reportingChart"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#DDDDDD"
-            android:layout_marginBottom="10dp" />
-
-        <Button
-            android:id="@+id/btnShowFlowChart"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Bcalm.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Speed Flow"
-            android:backgroundTint="#FF9800"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="6dp"
+                    android:text="נפח מצטבר (mL)"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/reportingChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnShowFlowChart"
+            style="@style/Widget.Bcalm.Button.Pink"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginBottom="14dp"
+            android:text="Show Speed Flow" />
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/flowRateChart"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_field_outline"
+            android:padding="10dp"
             android:visibility="gone" />
 
     </LinearLayout>

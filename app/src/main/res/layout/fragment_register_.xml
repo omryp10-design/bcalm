@@ -1,140 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@drawable/bg_gradient"
+    android:fillViewport="true"
     tools:context=".Register_Fragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginTop="18dp"
             android:text="Create New Account"
-            android:textColor="#333333"
-            android:textSize="28sp"
+            android:textColor="@color/primary_blue"
+            android:textSize="26sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Full Name:"
-            android:textColor="#555555"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editTextFullName"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginBottom="16dp"
-            android:background="@android:drawable/editbox_background"
-            android:hint="e.g. Israel Israeli"
-            android:inputType="textPersonName"
-            android:paddingLeft="15dp" />
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="22dp"
+            android:text="Let's set up your bcalm profile"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email Address:"
-            android:textColor="#555555"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editTextTextEmailAddress2"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Bcalm.Card"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginBottom="16dp"
-            android:background="@android:drawable/editbox_background"
-            android:hint="example@mail.com"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="15dp" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Password:"
-            android:textColor="#555555"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editTextTextPassword2"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginBottom="16dp"
-            android:background="@android:drawable/editbox_background"
-            android:hint="At least 6 characters"
-            android:inputType="textPassword"
-            android:paddingLeft="15dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="22dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="National ID Number:"
-            android:textColor="#555555"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editTextTextID"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginBottom="16dp"
-            android:background="@android:drawable/editbox_background"
-            android:hint="9 digits"
-            android:inputType="number"
-            android:paddingLeft="15dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Bcalm.TextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:hint="Full Name">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone Number:"
-            android:textColor="#555555"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editTextPhone"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginBottom="16dp"
-            android:background="@android:drawable/editbox_background"
-            android:hint="05X-XXXXXXX"
-            android:inputType="phone"
-            android:paddingLeft="15dp" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextFullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Age:"
-            android:textColor="#555555"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editTextAge"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginBottom="32dp"
-            android:background="@android:drawable/editbox_background"
-            android:hint="Minimum age: 18"
-            android:inputType="number"
-            android:paddingLeft="15dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Bcalm.TextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:hint="Email Address">
 
-        <Button
-            android:id="@+id/button_registerr"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:backgroundTint="#4CAF50"
-            android:text="Create My Account"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textAllCaps="false" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextTextEmailAddress2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Bcalm.TextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:hint="Password (min. 6 characters)"
+                    app:endIconMode="password_toggle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextTextPassword2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Bcalm.TextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:hint="National ID Number (9 digits)">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextTextID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Bcalm.TextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:hint="Phone Number">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Bcalm.TextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:hint="Age (18+)">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_registerr"
+                    style="@style/Widget.Bcalm.Button.Pink"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Create My Account" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="14dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 </ScrollView>

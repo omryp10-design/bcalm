@@ -1,101 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FFFFFF">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/tvDailySummaryTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
         android:text="Daily Summary"
+        android:textColor="@color/text_primary"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="20dp" />
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvTotalFeedings"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Bcalm.Card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total Feedings: 0"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="12dp">
 
-    <TextView
-        android:id="@+id/tvTotalMilk"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Today's totals"
+                android:textColor="@color/primary_blue"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTotalFeedings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:text="Total Feedings: 0"
+                android:textColor="@color/text_primary"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/tvTotalMilk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:text="Total Milk: 0 ml"
+                android:textColor="@color/text_primary"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/tvAverageFeeding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Average Feeding: 0 ml"
+                android:textColor="@color/text_primary"
+                android:textSize="17sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Bcalm.Card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total Milk: 0 ml"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="12dp">
 
-    <TextView
-        android:id="@+id/tvAverageFeeding"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Baby intake comparison"
+                android:textColor="@color/accent_pink_dark"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvBabyAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:text="Baby Age: --"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvExpectedDailyIntake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:text="Expected Daily Intake: --"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvIntakeComparison"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comparison: --"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Bcalm.Card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Average Feeding: 0 ml"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Diapers"
+                android:textColor="@color/accent_pink_dark"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDiaperSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Today: 0  (0 wet, 0 dirty)"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddDiaper"
+                style="@style/Widget.Bcalm.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:text="+  Add Diaper" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Baby Intake Comparison"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
-
-    <TextView
-        android:id="@+id/tvBabyAge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Baby Age: --"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
+        android:text="Feeding history"
+        android:textColor="@color/text_primary"
         android:textSize="16sp"
-        android:layout_marginBottom="6dp" />
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvExpectedDailyIntake"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Expected Daily Intake: --"
-        android:textSize="16sp"
-        android:layout_marginBottom="6dp" />
-
-    <TextView
-        android:id="@+id/tvIntakeComparison"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Comparison: --"
-        android:textSize="16sp"
-        android:layout_marginBottom="20dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Feeding History"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp" />
-
-    <ListView
-        android:id="@+id/lvFeedings"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Bcalm.Card"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
 
-    <Button
-        android:id="@+id/btnAddFeeding"
+        <ListView
+            android:id="@+id/lvFeedings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/divider"
+            android:dividerHeight="1dp"
+            android:padding="8dp" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddManualFeeding"
+        style="@style/Widget.Bcalm.Button.Outlined"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Add New Feeding"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp" />
+        android:layout_height="50dp"
+        android:layout_marginTop="14dp"
+        android:text="+  Add Manual (bottle / formula)" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddFeeding"
+        style="@style/Widget.Bcalm.Button.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginTop="10dp"
+        android:text="+  Add Pump Feeding"
+        android:textSize="17sp" />
 
 </LinearLayout>

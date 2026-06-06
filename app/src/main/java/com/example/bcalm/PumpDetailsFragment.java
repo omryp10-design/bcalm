@@ -8,11 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -48,6 +50,7 @@ public class PumpDetailsFragment extends Fragment {
     private TextView dateTitle;
     private Button btnToggle, btnReset, btnShowFlowChart;
     private LineChart reportingChart, flowRateChart;
+    private ProgressBar progressBarSave;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -95,6 +98,7 @@ public class PumpDetailsFragment extends Fragment {
         btnShowFlowChart = view.findViewById(R.id.btnShowFlowChart);
         reportingChart = view.findViewById(R.id.reportingChart);
         flowRateChart = view.findViewById(R.id.flowRateChart);
+        progressBarSave = view.findViewById(R.id.progressBarSave);
 
         dateTitle.setText("Data for: " + selectedDate);
 
@@ -111,6 +115,8 @@ public class PumpDetailsFragment extends Fragment {
 
         setupCharts();
         initAWS();
+
+        ThemeUtil.applyBabyBackground(view);
 
         return view;
     }
@@ -284,7 +290,7 @@ public class PumpDetailsFragment extends Fragment {
                     AWSIotMqttQos.QOS0
             );
 
-            saveFeedingToFirebase();
+            promptForBreastAndSave();
         }
     }
 
@@ -324,7 +330,7 @@ public class PumpDetailsFragment extends Fragment {
         flowRateChart.invalidate();
     }
 
-    private void saveFeedingToFirebase() {
+    private void promptForBreastAndSave() {
         if (mAuth.getCurrentUser() == null) {
             Toast.makeText(getContext(), "User is not logged in", Toast.LENGTH_SHORT).show();
             return;
@@ -340,6 +346,22 @@ public class PumpDetailsFragment extends Fragment {
             return;
         }
 
+        String[] sides = {"Left", "Right", "Both"};
+
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Which breast?")
+                .setItems(sides, (dialog, which) -> saveFeedingToFirebase(sides[which]))
+                .setNegativeButton("Skip", (dialog, which) -> saveFeedingToFirebase(""))
+                .show();
+    }
+
+    private void saveFeedingToFirebase(String side) {
+        if (mAuth.getCurrentUser() == null) {
+            return;
+        }
+
+        setSaving(true);
+
         String userId = mAuth.getCurrentUser().getUid();
 
         String currentTime = new SimpleDateFormat(
@@ -352,6 +374,7 @@ public class PumpDetailsFragment extends Fragment {
         feedingData.put("amountMl", lastKnownAmount);
         feedingData.put("durationSeconds", totalSecondsElapsed);
         feedingData.put("date", selectedDate);
+        feedingData.put("side", side);
         feedingData.put("createdAt", System.currentTimeMillis());
 
         mDatabase
@@ -361,6 +384,7 @@ public class PumpDetailsFragment extends Fragment {
                 .push()
                 .setValue(feedingData)
                 .addOnSuccessListener(aVoid -> {
+                    setSaving(false);
                     Toast.makeText(
                             getContext(),
                             "Feeding saved successfully",
@@ -372,11 +396,38 @@ public class PumpDetailsFragment extends Fragment {
                     }
                 })
                 .addOnFailureListener(e -> {
+                    setSaving(false);
                     Toast.makeText(
                             getContext(),
                             "Error saving feeding: " + e.getMessage(),
                             Toast.LENGTH_LONG
                     ).show();
                 });
+    }
+
+    private void setSaving(boolean saving) {
+        if (progressBarSave != null) {
+            progressBarSave.setVisibility(saving ? View.VISIBLE : View.GONE);
+        }
+        if (btnToggle != null) {
+            btnToggle.setEnabled(!saving);
+        }
+        if (btnReset != null) {
+            btnReset.setEnabled(!saving);
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (mqttManager != null) {
+            try {
+                mqttManager.disconnect();
+            } catch (Exception e) {
+                Log.e("AWS_IOT", "Disconnect error", e);
+            }
+        }
+        isConnected = false;
+        isPumping = false;
     }
 }

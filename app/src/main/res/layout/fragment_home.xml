@@ -1,44 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FFFFFF">
+    android:background="@drawable/bg_gradient"
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/homeTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="My Measurement Chart"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#333333"
-        android:gravity="center"
-        android:layout_marginBottom="24dp" />
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <Button
-        android:id="@+id/btnUpdateBaby"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update My Baby"
-        android:backgroundTint="#FF4081"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="12dp" />
+        <TextView
+            android:id="@+id/homeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Welcome back 👋"
+            android:textColor="@color/text_primary"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:backgroundTint="#9E9E9E"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="20dp"
+            android:text="Pick a day to view its feeding summary"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Bcalm.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
 
-</LinearLayout>
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:theme="@style/Theme.Bcalm" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnManageBabies"
+            style="@style/Widget.Bcalm.Button.Pink"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="12dp"
+            android:text="👶  My Baby" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnWeeklyTrends"
+            style="@style/Widget.Bcalm.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="12dp"
+            android:text="📊  Weekly Trends" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGrowth"
+            style="@style/Widget.Bcalm.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="12dp"
+            android:text="📈  Growth (weight)" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            style="@style/Widget.Bcalm.Button.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Logout" />
+
+    </LinearLayout>
+</ScrollView>
