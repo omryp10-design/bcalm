@@ -12,10 +12,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Home_Fragment extends Fragment {
 
     private CalendarView calendarView;
     private Button btnUpdateBaby;
+    private Button btnLogout;
 
     @Nullable
     @Override
@@ -28,6 +31,7 @@ public class Home_Fragment extends Fragment {
 
         calendarView = view.findViewById(R.id.calendarView);
         btnUpdateBaby = view.findViewById(R.id.btnUpdateBaby);
+        btnLogout = view.findViewById(R.id.btnLogout);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -45,6 +49,13 @@ public class Home_Fragment extends Fragment {
         btnUpdateBaby.setOnClickListener(v -> {
             Navigation.findNavController(v)
                     .navigate(R.id.action_home_Fragment_to_babyProfileFragment);
+        });
+
+        btnLogout.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+
+            Navigation.findNavController(v)
+                    .navigate(R.id.login_Fragment);
         });
 
         return view;

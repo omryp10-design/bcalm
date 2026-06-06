@@ -20,37 +20,60 @@
             android:gravity="center"
             android:layout_marginBottom="30dp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Baby's Full Name"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
         <EditText
             android:id="@+id/etBabyName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Baby's Full Name"
+            android:hint="Enter baby's full name"
             android:inputType="textPersonName"
             android:layout_marginBottom="15dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date Of Birth"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
 
         <EditText
             android:id="@+id/etDateOfBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Select Date Of Birth"
+            android:hint="Select date of birth"
             android:focusable="false"
             android:clickable="true"
             android:cursorVisible="false"
             android:layout_marginBottom="15dp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Weight (kg)"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
         <EditText
             android:id="@+id/etWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Weight (kg)"
+            android:hint="Enter weight in kg"
             android:inputType="numberDecimal"
             android:layout_marginBottom="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Country:"
-            android:textSize="16sp" />
+            android:text="Country"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
 
         <Spinner
             android:id="@+id/spinnerCountry"

@@ -16,8 +16,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -33,6 +36,9 @@ public class BabyProfileFragment extends Fragment {
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
+
+    private String[] countries = {"Israel", "USA", "UK", "Germany", "France", "Canada"};
+    private ArrayAdapter<String> countryAdapter;
 
     @Nullable
     @Override
@@ -54,20 +60,73 @@ public class BabyProfileFragment extends Fragment {
 
         etDateOfBirth.setOnClickListener(v -> showDatePicker());
 
-        String[] countries = {"Israel", "USA", "UK", "Germany", "France", "Canada"};
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+        countryAdapter = new ArrayAdapter<>(
                 requireContext(),
                 android.R.layout.simple_spinner_item,
                 countries
         );
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCountry.setAdapter(adapter);
+        countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCountry.setAdapter(countryAdapter);
+
+        loadBabyProfile();
 
         btnSaveProfile.setOnClickListener(v -> saveBabyProfile());
 
         return view;
+    }
+
+    private void loadBabyProfile() {
+        if (mAuth.getCurrentUser() == null) {
+            Toast.makeText(getContext(), "User is not logged in", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String userId = mAuth.getCurrentUser().getUid();
+
+        mDatabase.child("babies").child(userId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (!snapshot.exists()) {
+                            return;
+                        }
+
+                        String fullName = snapshot.child("fullName").getValue(String.class);
+                        String dateOfBirth = snapshot.child("dateOfBirth").getValue(String.class);
+                        Double weight = snapshot.child("weight").getValue(Double.class);
+                        String country = snapshot.child("country").getValue(String.class);
+
+                        if (fullName != null) {
+                            etBabyName.setText(fullName);
+                        }
+
+                        if (dateOfBirth != null) {
+                            etDateOfBirth.setText(dateOfBirth);
+                        }
+
+                        if (weight != null) {
+                            etWeight.setText(String.valueOf(weight));
+                        }
+
+                        if (country != null) {
+                            int countryPosition = countryAdapter.getPosition(country);
+
+                            if (countryPosition >= 0) {
+                                spinnerCountry.setSelection(countryPosition);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(
+                                getContext(),
+                                "Error loading profile: " + error.getMessage(),
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+                });
     }
 
     private void showDatePicker() {
